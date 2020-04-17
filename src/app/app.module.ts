@@ -3,22 +3,23 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { GearListComponent } from './gear-packages/gear-list/gear-list.component';
-import { GearItemComponent } from './gear-packages/gear-list/gear-item/gear-item.component';
-import { GearPackagesComponent } from './gear-packages/gear-packages.component';
+import { BikeListComponent } from './bikes/bike-list/bike-list.component';
+import { BikeItemComponent } from './bikes/bike-list/bike-item/bike-item.component';
+import { BikesComponent } from './bikes/bikes.component';
+import {BikeService} from './bikes/bike.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    GearListComponent,
-    GearItemComponent,
-    GearPackagesComponent
+    BikeListComponent,
+    BikeItemComponent,
+    BikesComponent
   ],
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [BikeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
