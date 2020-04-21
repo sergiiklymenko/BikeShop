@@ -1,4 +1,4 @@
-export class Item {
+export class Items {
   constructor(public name: string, public amount: number) {
   }
 }

@@ -1,32 +1,38 @@
 import {Injectable} from '@angular/core';
 import {Bike} from './bike.model';
-import {Item} from '../shared/item.model';
+import {Items} from '../shared/item.model';
 
 @Injectable()
 export class BikeService {
 
   private bikes: Bike[] = [
     new Bike(
-      'Mountain King',
-      'Package for fearless riders',
-      'https://i.dmarge.com/2017/02/alpinestars-960x580.jpg',
+      'Mountain Rider',
+      'Giant Stance 2',
+      'https://images.giant-bicycles.com/b_white,c_pad,h_650,q_80/vrdxcy2elmqh06aavo9i/MY20Stance2_ColorB.jpg',
       [
-        new Item('Full face helmet', 1),
-        new Item('Gloves', 2),
-        new Item('Knee pads', 2)
+        new Items('Frame', 1),
+        new Items('Wheels', 2),
+        new Items('Shock', 2)
       ]),
     new Bike(
-      'Road Master',
-      'Faster than ever',
-      'https://www.whycycles.com/wp-content/uploads/2017/08/McleodC__170627_DSC03375.jpg',
+      'Beach Bummer',
+      'Juuust chilling on the beach',
+      // tslint:disable-next-line:max-line-length
+      'https://img.grouponcdn.com/deal/jtVDRd7pHmxPTbyPYLJb/ZU-700x420/v1/c700x420.jpg',
       [
-        new Item('Light helmet', 1),
-        new Item('Jersey shorts', 1)
+        new Items('Frame', 1),
+        new Items('Wheels', 2),
+        new Items('Basket', 1)
       ]
     )
   ];
 
   getBikes() {
     return this.bikes.slice();
+  }
+
+  getBike(index: number) {
+    return this.bikes[index];
   }
 }
