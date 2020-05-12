@@ -1,9 +1,10 @@
-import {Injectable} from '@angular/core';
 import {Bike} from './bike.model';
 import {Items} from '../shared/item.model';
+import {EventEmitter} from '@angular/core';
 
-@Injectable()
+
 export class BikeService {
+  bikeSelected = new EventEmitter<Bike>()
 
   private bikes: Bike[] = [
     new Bike(

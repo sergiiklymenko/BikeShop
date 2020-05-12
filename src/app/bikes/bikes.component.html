@@ -3,8 +3,13 @@
     <app-bike-list></app-bike-list>
   </div>
 </div>
-<!--<div class="row">-->
-<!--  <div class="col-md7">-->
-<!--    <app-bike-detail></app-bike-detail>-->
-<!--  </div>-->
-<!--</div>-->
+<div class="row">
+  <div class="col-md7">
+    <app-bike-detail
+    *ngIf="selectedBike; else infoText"
+    [bike]="selectedBike"></app-bike-detail>
+    <ng-template #infoText>
+      <p>Please select a Bike!</p>
+    </ng-template>
+  </div>
+</div>

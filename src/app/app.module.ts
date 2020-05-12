@@ -6,7 +6,6 @@ import {HeaderComponent} from './header/header.component';
 import {BikeListComponent} from './bikes/bike-list/bike-list.component';
 import {BikeItemComponent} from './bikes/bike-list/bike-item/bike-item.component';
 import {BikesComponent} from './bikes/bikes.component';
-import {BikeService} from './bikes/bike.service';
 import {BikeDetailComponent} from './bikes/bike-detail/bike-detail.component';
 import {RouterModule} from '@angular/router';
 
@@ -23,7 +22,7 @@ import {RouterModule} from '@angular/router';
     BrowserModule,
     RouterModule
   ],
-  providers: [BikeService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {
