@@ -1,10 +1,11 @@
 import {Bike} from './bike.model';
-import {Items} from '../shared/item.model';
-import {EventEmitter} from '@angular/core';
+import {Item} from '../shared/item.model';
+import {EventEmitter, Injectable} from '@angular/core';
+import {ShoppingListService} from '../shopping-list/shopping-list.service';
 
-
+@Injectable()
 export class BikeService {
-  bikeSelected = new EventEmitter<Bike>()
+  bikeSelected = new EventEmitter<Bike>();
 
   private bikes: Bike[] = [
     new Bike(
@@ -12,9 +13,9 @@ export class BikeService {
       'Giant Stance 2',
       'https://images.giant-bicycles.com/b_white,c_pad,h_650,q_80/vrdxcy2elmqh06aavo9i/MY20Stance2_ColorB.jpg',
       [
-        new Items('Frame', 1),
-        new Items('Wheels', 2),
-        new Items('Shock', 2)
+        new Item('Frame', 1),
+        new Item('Wheels', 2),
+        new Item('Shock', 2)
       ]),
     new Bike(
       'Beach Bummer',
@@ -22,12 +23,15 @@ export class BikeService {
       // tslint:disable-next-line:max-line-length
       'https://img.grouponcdn.com/deal/jtVDRd7pHmxPTbyPYLJb/ZU-700x420/v1/c700x420.jpg',
       [
-        new Items('Frame', 1),
-        new Items('Wheels', 2),
-        new Items('Basket', 1)
+        new Item('Frame', 1),
+        new Item('Wheels', 2),
+        new Item('Basket', 1)
       ]
     )
   ];
+
+  constructor(private slService: ShoppingListService) {
+  }
 
   getBikes() {
     return this.bikes.slice();
@@ -35,5 +39,10 @@ export class BikeService {
 
   getBike(index: number) {
     return this.bikes[index];
+  }
+
+  addItemsToShoppingList(items: Item[]) {
+    this.slService.addItems(items);
+
   }
 }

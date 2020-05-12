@@ -12,10 +12,14 @@ export class BikeDetailComponent implements OnInit {
   @Input() bike: Bike;
   id: number;
 
-  constructor() {
+  constructor(private bikeService: BikeService) {
   }
 
   ngOnInit() {
+  }
+
+  onAddToShoppingList() {
+    this.bikeService.addItemsToShoppingList(this.bike.items);
   }
 
 }
