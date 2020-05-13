@@ -15,6 +15,7 @@ export class ShoppingListService {
 
   addItem(item: Item) {
     this.items.push(item);
+    this.itemsChanged.emit(this.items.slice());
   }
 
   addItems(items: Item[]) {
