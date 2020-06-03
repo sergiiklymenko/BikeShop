@@ -14,6 +14,8 @@ import {ShoppingListService} from './shopping-list/shopping-list.service';
 import {RequestFormComponent} from './request-form/request-form.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {AppRoutingModule} from './app-routing.module';
+import { BikeStartComponent } from './bikes/bike-start/bike-start.component';
+import { BikeEditComponent } from './bikes/bike-edit/bike-edit.component';
 
 
 @NgModule({
@@ -29,6 +31,8 @@ import {AppRoutingModule} from './app-routing.module';
     DropdownDirective,
     RequestFormComponent,
     PageNotFoundComponent,
+    BikeStartComponent,
+    BikeEditComponent,
   ],
   imports: [
     BrowserModule,

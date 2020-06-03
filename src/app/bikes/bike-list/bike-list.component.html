@@ -1,4 +1,9 @@
 <div class="row">
+  <div class="col-xs-12"></div>
+    <button class="btn btn-success" (click)="onNewBike()">Create new bike</button>
+</div>
+<hr>
+<div class="row">
   <div class="col-xs-12">
     <app-bike-item
       *ngFor="let bikeItem of bikes; let i=index"
