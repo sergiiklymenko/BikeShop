@@ -16,6 +16,7 @@ import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {AppRoutingModule} from './app-routing.module';
 import { BikeStartComponent } from './bikes/bike-start/bike-start.component';
 import { BikeEditComponent } from './bikes/bike-edit/bike-edit.component';
+import {FormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { BikeEditComponent } from './bikes/bike-edit/bike-edit.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [ShoppingListService],
   bootstrap: [AppComponent]

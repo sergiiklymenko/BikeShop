@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-request-form',
@@ -6,10 +7,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./request-form.component.css']
 })
 export class RequestFormComponent implements OnInit {
+  @ViewChild('f', {static: false}) signupForm: NgForm;
 
-  constructor() { }
+  defaultSize = 'small';
+  desc = '';
+  genders = ['male', 'female'];
+  defaultGender = 'male'
+
+  constructor() {
+  }
 
   ngOnInit() {
+  }
+
+  // onSubmit(form: NgForm) {
+  //   console.log(form);
+  // }
+
+  onSubmit() {
+    console.log(this.signupForm);
   }
 
 }
