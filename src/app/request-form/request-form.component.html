@@ -1,72 +1,51 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-      <form (ngSubmit)="onSubmit()" #f=ngForm>
+      <form [formGroup]="requestForm" (ngSubmit)="onSubmit()">
         <div
-          id="user-data"
-          ngModelGroup="userData"
-          #userData="ngModelGroup">
+          formGroupName="userData"
+          id="user-data">
           <div class="form-group">
             <label for="nickname">Nickname</label>
             <input
               type="text"
               id="nickname"
-              class="form-control"
-              ngModel
-              name="nickname"
-              required>
+              formControlName="nickname"
+              class="form-control">
           </div>
           <div class="form-group">
             <label for="email">Email</label>
             <input
               type="email"
               id="email"
-              class="form-control"
-              ngModel
-              name="email"
-              required
-              email
-              #email="ngModel">
-            <span class="help-block" *ngIf="email.invalid && email.touched">Please enter a valid email!</span>
+              formControlName="email"
+              class="form-control">
+            <span
+              class="help-block"
+              *ngIf="!requestForm.get('userData.email') && requestForm.get('userData.email').touched">Please enter a valid email!</span>
           </div>
         </div>
         <div class="form-group">
           <label for="size">Bike Size</label>
           <select
-            type="text"
             id="size"
-            class="form-control"
-            [ngModel]="defaultSize"
-            name="size">
-            <option value="small">Small</option>
-            <option value="medium">Medium</option>
-            <option value="large">Large</option>
+            formArrayName="size"
+            class="form-control">
+            <option *ngFor="let size of bikeSizes" [value]="size">{{size}}</option>
           </select>
         </div>
-        <p *ngIf="!userData.valid && userData.touched">User Data is invalid!</p>
-        <div class="form-group">
-        <textarea
-          name="description"
-          rows="3"
-          class="form-control"
-          [(ngModel)]="desc"></textarea>
-          <p>Your description is here: {{desc}}</p>
-        </div>
+        <p *ngIf="requestForm.get('userData').invalid && requestForm.get('userData').touched">User Data is invalid!</p>
         <div class="radio" *ngFor="let gender of genders">
           <label>
             <input
               type="radio"
-              name="gender"
-              ngModel
-              [value]="gender"
-              [(ngModel)]="defaultGender">
-            {{gender}}
+              formControlName="gender"
+              [value]="gender">{{gender}}
           </label>
         </div>
         <button
           class="btn btn-primary"
-          type="submit"
-          [disabled]="!f.valid">Submit
+          type="submit">Submit
         </button>
       </form>
     </div>

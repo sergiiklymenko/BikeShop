@@ -1,5 +1,5 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {NgForm} from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-request-form',
@@ -7,25 +7,35 @@ import {NgForm} from '@angular/forms';
   styleUrls: ['./request-form.component.css']
 })
 export class RequestFormComponent implements OnInit {
-  @ViewChild('f', {static: false}) signupForm: NgForm;
-
-  defaultSize = 'small';
-  desc = '';
+  requestForm: FormGroup;
+  bikeSizes: ['Small', 'Medium', 'Large'];
+  forbiddenNick = 'Test'
   genders = ['male', 'female'];
-  defaultGender = 'male'
 
   constructor() {
   }
 
   ngOnInit() {
+    this.requestForm = new FormGroup({
+      userData: new FormGroup({
+        nickname: new FormControl(null, [Validators.required, this.forbiddenNicknames.bind(this)]),
+        email: new FormControl(null, [Validators.required, Validators.email])
+      }),
+      size: new FormArray([]),
+      gender: new FormControl()
+    });
   }
-
-  // onSubmit(form: NgForm) {
-  //   console.log(form);
-  // }
 
   onSubmit() {
-    console.log(this.signupForm);
+    console.log(this.requestForm);
   }
+
+  forbiddenNicknames(control: FormControl): { [s: string]: boolean } {
+    if (this.forbiddenNick.indexOf(control.value) !== -1) {
+      return {nameIsForbidden: true};
+    }
+    return null;
+  }
+
 
 }
